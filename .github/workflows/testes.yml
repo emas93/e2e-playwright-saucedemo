@@ -2,7 +2,7 @@ name: Testes E2E
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
   workflow_dispatch:
 
@@ -25,8 +25,6 @@ jobs:
         run: npm ci
       - name: Instalar Chromium
         run: npx playwright install --with-deps chromium
-      - name: Criar arquivo de ambiente
-        run: cp .env.example .env
       - name: Verificar TypeScript
         run: npm run verificar
       - name: Executar testes
@@ -39,22 +37,18 @@ jobs:
           path: playwright-report/
           retention-days: 14
       - name: Preparar relatório para o Pages
-        if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+        if: ${{ !cancelled() && (github.ref_name == 'main' || github.ref_name == 'master') }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: playwright-report/
 
   publicar:
     needs: testes
-    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    if: ${{ !cancelled() && (github.ref_name == 'main' || github.ref_name == 'master') }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - id: deploy
-<<<<<<< HEAD
         uses: actions/deploy-pages@v4
-=======
-        uses: actions/deploy-pages@v4
->>>>>>> 3d0e9e2b520f57bc43d7b2f72993eac2deee0043

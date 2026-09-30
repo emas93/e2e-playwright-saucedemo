@@ -1,6 +1,7 @@
 # E2E Playwright: SauceDemo
 
 Testes end-to-end de login do [SauceDemo](https://www.saucedemo.com), escritos com **Playwright** e **TypeScript**, seguindo o **Page Object Pattern**.
+Os relatório de resultados dos testes foram publicados em [Relatório de testes](https://emas93.github.io/e2e-playwright-saucedemo/)
 
 ## O que o projeto cobre
 

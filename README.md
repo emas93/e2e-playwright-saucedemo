@@ -18,7 +18,6 @@ O fluxo de login é testado em 12 cenários: acesso com perfis válidos, mensage
 | Corrigir a senha | senha errada e depois certa | Erro na primeira tentativa e acesso na segunda |
 | Tempo de login | `performance_glitch_user` | Login concluído em até 3 segundos |
 
-Nos cenários de erro, os testes também confirmam que o usuário continua na tela de login e que a página de produtos não aparece.
 
 ## Tecnologias
 
@@ -126,7 +125,3 @@ O workflow `.github/workflows/testes.yml` roda a cada `push`, `pull request` ou 
 
 O teste **"Concluir o login em até 3 segundos"** usa o `performance_glitch_user`, que o SauceDemo atrasa de propósito. Na última execução registrada, o login levou mais que os 3 segundos esperados e o teste falhou. Esse é o cenário que demonstra como o relatório exibe uma falha (erro, screenshot e trace).
 
-## Problemas comuns no Windows
-
-- **`npm.ps1 não pode ser carregado`**: rode `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` no PowerShell.
-- **`browserType.launch: spawn UNKNOWN`** ao rodar pelo Git Bash: execute os comandos pelo PowerShell ou pelo cmd.

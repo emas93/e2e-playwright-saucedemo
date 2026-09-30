@@ -18,9 +18,6 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
     channel: 'chrome',
-  headless: false,
-  launchOptions: {
-    slowMo: 900, 
-  },
+  headless: true,
   },
 });
